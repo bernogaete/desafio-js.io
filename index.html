@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafío 1 - JavaScript</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+
+    <section>
+        <div class="card">
+            <div class="img-card"></div>
+            <h6>Laptop Gamer AMD</h6>
+            <p>Precio base: $<span class="precioinicial" contenteditable="true" oninput="
+                var precio = parseFloat(this.textContent) || 0;
+                var cantidad = parseInt(document.querySelector('.cantidad').textContent) || 0;
+                document.querySelector('.valortotal').textContent = (precio * cantidad);
+            ">0</span></p>
+
+            <p>Cantidad:
+                <span class="cantidad" contenteditable="true">0</span>
+
+                <!-- Botón más (+) -->
+                <button onclick="
+                    let cantidadElement = document.querySelector('.cantidad');
+                    let cantidad = parseInt(cantidadElement.textContent) || 0;
+                    cantidad += 1;
+                    cantidadElement.textContent = cantidad;
+                    
+                    let precio = parseFloat(document.querySelector('.precioinicial').textContent) || 0;
+                    document.querySelector('.valortotal').textContent = (precio * cantidad);
+                ">+</button>
+
+                <!-- Botón menos (-) -->
+                <button onclick="
+                    let cantidadElement = document.querySelector('.cantidad');
+                    let cantidad = parseInt(cantidadElement.textContent) || 0;
+                    cantidad -= 1;
+                    // if (cantidad < 0) cantidad = 0;
+                    cantidadElement.textContent = cantidad;
+                    
+                    let precio = parseFloat(document.querySelector('.precioinicial').textContent) || 0;
+                    document.querySelector('.valortotal').textContent = (precio * cantidad);
+                ">-</button>
+            </p>
+        </div>
+    </section>
+
+    <div class="total-section">
+        <p>Total a pagar: $<span class="valortotal">0</span></p>
+    </div>
+<script src="./assets/js/script.js"></script>
+</body>
+</html>
